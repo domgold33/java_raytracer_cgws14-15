@@ -1,1 +1,8 @@
 .idea
+out
+Computergrafik1.iml
+.DS_Store
+nbproject
+build.xml
+build
+manifest.mf
