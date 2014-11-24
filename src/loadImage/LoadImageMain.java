@@ -17,13 +17,14 @@ import javax.swing.filechooser.FileFilter;
  *
  * @author Dominik
  */
-public class Computergrafik1 {
+public class LoadImageMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //hallo git
         createImageView();
     }
     
