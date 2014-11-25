@@ -36,14 +36,29 @@ public final class Point3 {
         this.z = z;
     }
     
+    /**
+     * Subtrahiert den gegebenen Punkt von diesem Punkt.
+     * @param p Der Subtrahent
+     * @return Das Ergebnis als neuer Vektor.
+     */
     public Vector3 sub(Point3 p){
         return new Vector3(x - p.x, y - p.y, z - p.z);
     }
-    
+
+    /**
+     * Subtrahiert den gegebenen Vektor von diesem Punkt.
+     * @param v Der Subtrahent.
+     * @return Das Ergebnis als neuer Punkt.
+     */
     public Point3 sub(Vector3 v){
         return new Point3(x - v.x, y - v.y, z - v.z);
     }
     
+    /**
+     * Addiert den gegebenen Vektor zu diesem Punkt.
+     * @param v Der zu addierende Vektor.
+     * @return Das Ergebnis als neuer Punkt.
+     */
     public Point3 add(Vector3 v){
         return new Point3(x + v.x, y + v.y, z + v.z);
     }

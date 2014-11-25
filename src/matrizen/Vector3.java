@@ -41,46 +41,94 @@ public final class Vector3 {
         this.magnitude = Math.sqrt(x*x + y*y + z*z);
     }
     
-    public Vector3 add(Vector3 v){
+    /**
+     * Addiert den gegebenen Vektor zu diesem Vektor.
+     * @param v Der zu addierende Vektor
+     * @return Das Ergebnis als neuer Vektor.
+     */
+    public Vector3 add(final Vector3 v){
         return new Vector3(x + v.x, y + v.y, z + v.z);
     }
     
-    public Vector3 add(Normal3 n){
+    /**
+     * Addiert den gegebenen Normalenvektor zu diesem Vektor.
+     * @param n Der zu addierende Normalenvektor
+     * @return Das Ergebnis als neuer Vektor.
+     */
+    public Vector3 add(final Normal3 n){
         return new Vector3(x + n.x, y + n.y, z + n.z);
     }
     
-    public Vector3 sub(Normal3 n){
+    /**
+     * Subtrahiert den gegebenen Normalenvektor von diesem Vektor.
+     * @param n Der zu subtrahierende Normalenvektor
+     * @return Das Ergebnis als neuer Vektor.
+     */
+    public Vector3 sub(final Normal3 n){
         return new Vector3(x - n.x, y - n.y, z - n.z);
     }
     
+    /**
+     * Multipliziert diesen Vektor mit dem gegebenen Wert.
+     * @param c Der Wert, mit dem multipliziert wird
+     * @return Das Ergebnis als neuer Vektor.
+     */
     public Vector3 mul(final double c){
         return new Vector3(x * c, y * c, z * c);
     }
     
-    public double dot(Vector3 v){
+    /**
+     * Bildet das Skalarprodukt dieses Vektors mit dem übergebenen.
+     * @param v Der 2. Faktor des Skalarpodukts.
+     * @return Das Ergebnis.
+     */
+    public double dot(final Vector3 v){
         return x * v.x + y * v.y + z * v.z;
     }
     
-    public double dot(Normal3 n){
+    /**
+     * Bildet das Skalarprodukt dieses Vektors mit dem übergebenen Normalenvektor.
+     * @param n Der 2. Faktor des Skalarpodukts.
+     * @return Das Ergebnis.
+     */
+    public double dot(final Normal3 n){
         return x * n.x + y * n.y + z * n.z;
     }
     
+    /**
+     * Bringt die Länge des Vektors auf 1.
+     * @return Der normalisierte Vektor.
+     */
     public Vector3 normalized(){
         return new Vector3(x / magnitude, y / magnitude, z / magnitude);
     }
     
+    /**
+     * Wandelt den Vektor in einen Normalenvektor um.
+     * @return Der Vektor als neuer Normalenvektor
+     */
     public Normal3 asNormal(){
         return new Normal3(x, y, z);
     }
     
-    public Vector3 reflectedOn(Normal3 n){
+    /**
+     * Reflektiert den Vektor an dem gegebenen Normalenvektor.
+     * @param n Der Normalenvektor, an dem reflektiert wird.
+     * @return der entstandene Vektor
+     */
+    public Vector3 reflectedOn(final Normal3 n){
         final double dot = n.dot(this) * -2;
-        Normal3 normal = n.mul(dot);
-        Vector3 result = this.add(normal);
+        final Normal3 normal = n.mul(dot);
+        final Vector3 result = this.add(normal);
         return result;
     }
     
-    public Vector3 x(Vector3 v){
+    /**
+     * Bildet das Kreuzprodukt des Vektors mit dem Übergebenen.
+     * @param v Der 2. Faktor des Kreuzprodukts
+     * @return Das Ergebnis als neuer Vektor.
+     */
+    public Vector3 x(final Vector3 v){
         return new Vector3(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x);
     }   
 

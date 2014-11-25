@@ -78,7 +78,12 @@ public final class Mat3x3 {
         this.determinant = aa * bb * cc + ab * bc * ca + ac * ba * cb - ca * bb * ac - cb * bc * aa - cc * ba * ab;
     }
     
-    public Mat3x3 mul(Mat3x3 m){
+    /**
+     * Multipliziert die Matrix mit einer anderen Matrix.
+     * @param m Die Matrix, mit der multipliziert wird.
+     * @return Das Ergebnis als neue Matrix.
+     */
+    public Mat3x3 mul(final Mat3x3 m){
         final double resultAa = aa * m.aa + ab * m.ba + ac * m.ca;
         final double resultBa = ba * m.aa + bb * m.ba + bc * m.ca;
         final double resultCa = ca * m.aa + cb * m.ba + cc * m.ca;
@@ -92,7 +97,12 @@ public final class Mat3x3 {
         return result;
     }
     
-    public Vector3 mul(Vector3 v){
+    /**
+     * Multipliziert die Matrix mit einem Vektor.
+     * @param v Der Vektor, mit dem die Matrix multipliziert wird
+     * @return Das Ergebnis der Rechnung als neuer Vektor.
+     */
+    public Vector3 mul(final Vector3 v){
         final double resultX = aa * v.x + ab * v.y + ac * v.z;
         final double resultY = ba * v.x + bb * v.y + bc * v.z;
         final double resultZ = ca * v.x + cb * v.y + cc * v.z;
@@ -100,7 +110,12 @@ public final class Mat3x3 {
         return result;
     }
     
-    public Point3 mul(Point3 p){
+    /**
+     * Multipliziert die Matrix mit einem Punkt.
+     * @param p Der Punkt, mit dem die Matrix multipliziert wird
+     * @return Das Ergebnis der Rechnung als neuer Punkt.
+     */
+    public Point3 mul(final Point3 p){
         final double resultX = aa * p.x + ab * p.y + ac * p.z;
         final double resultY = ba * p.x + bb * p.y + bc * p.z;
         final double resultZ = ca * p.x + cb * p.y + cc * p.z;
@@ -108,17 +123,32 @@ public final class Mat3x3 {
         return result;
     }
     
-    public Mat3x3 changeCol1(Vector3 v){
+    /**
+     * Tauscht die 1. Spalte der Matrix durch einen Vektor aus.
+     * @param v Vektor, der die 1. Spalte ersetzt
+     * @return Die neu entstandene Matrix.
+     */
+    public Mat3x3 changeCol1(final Vector3 v){
         Mat3x3 newMat = new Mat3x3(v.x, ab, ac, v.y, bb, bc, v.z, cb, cc);
         return newMat;
     }
     
-    public Mat3x3 changeCol2(Vector3 v){
+    /**
+     * Tauscht die 2. Spalte der Matrix durch einen Vektor aus.
+     * @param v Vektor, der die 2. Spalte ersetzt
+     * @return Die neu entstandene Matrix.
+     */
+    public Mat3x3 changeCol2(final Vector3 v){
         Mat3x3 newMat = new Mat3x3(aa, v.x, ac, ba, v.y, bc, ca, v.z, cc);
         return newMat;
     }
     
-    public Mat3x3 changeCol3(Vector3 v){
+    /**
+     * Tauscht die 3. Spalte der Matrix durch einen Vektor aus.
+     * @param v Vektor, der die dritte Spalte ersetzt
+     * @return Die neu entstandene Matrix.
+     */
+    public Mat3x3 changeCol3(final Vector3 v){
         Mat3x3 newMat = new Mat3x3(aa, ab, v.x, ba, bb, v.y, ca, cb, v.z);
         return newMat;
     }

@@ -36,15 +36,30 @@ public final class Normal3 {
         this.z = z;
     }
     
+    /**
+     * Multipliziert diesen Normalenvektor mit dem übergebenen Wert.
+     * @param c Der Wert, mit dem multipliziert werden soll.
+     * @return Das Ergebnis als neuer Normalenvektor.
+     */
     public Normal3 mul(final double c){
         return new Normal3(x * c, y * c, z * c);
     }
     
-    public Normal3 add(Normal3 n){
+    /**
+     * Addiert den gegebenen Normalenvektor zu diesem.
+     * @param n Der zu addierende Normalenvektor
+     * @return Das Ergebnis als neuer Normalenvektor.
+     */
+    public Normal3 add(final Normal3 n){
         return new Normal3(x + n.x, y + n.y, z + n.z);
     }
     
-    public double dot(Vector3 v){
+    /**
+     * Bildet das Skalarprodukt des Normalenvektors mit dem übergebenen Vektor.
+     * @param v Der 2. Faktor des Skalarprodukts
+     * @return Das Ergebnis des Skalarprodukts.
+     */
+    public double dot(final Vector3 v){
         return x * v.x + y * v.y + z * v.z;
     }
 
