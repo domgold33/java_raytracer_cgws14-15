@@ -11,12 +11,30 @@ package matrizen;
  */
 public final class Vector3 {
     
+    /**
+     * x - Wert des Vektors
+     */
     public final double x;
+    /**
+     * y - Wert des Vektors
+     */
     public final double y;
+    /**
+     * z - Wert des Vektors
+     */
     public final double z;
+    /**
+     * Länge des Vektors
+     */
     public final double magnitude;
     
-    public Vector3(double x, double y, double z){
+    /**
+     * Konstruktor zur Erstellung eines Vektors im dreidimensionalen Raum
+     * @param x x - Wert
+     * @param y y - Wert
+     * @param z z - Wert
+     */
+    public Vector3(final double x, final double y, final double z){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -35,7 +53,7 @@ public final class Vector3 {
         return new Vector3(x - n.x, y - n.y, z - n.z);
     }
     
-    public Vector3 mul(double c){
+    public Vector3 mul(final double c){
         return new Vector3(x * c, y * c, z * c);
     }
     
@@ -56,7 +74,7 @@ public final class Vector3 {
     }
     
     public Vector3 reflectedOn(Normal3 n){
-        double dot = n.dot(this) * -2;
+        final double dot = n.dot(this) * -2;
         Normal3 normal = n.mul(dot);
         Vector3 result = this.add(normal);
         return result;
@@ -64,10 +82,38 @@ public final class Vector3 {
     
     public Vector3 x(Vector3 v){
         return new Vector3(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x);
-    }
-    
-    public boolean equals(Vector3 v){
-        return v.x == x && v.y == y && v.z == z;
     }   
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.z) ^ (Double.doubleToLongBits(this.z) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vector3 other = (Vector3) obj;
+        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Vector3{" + "x=" + x + ", y=" + y + ", z=" + z + '}';
+    }
     
 }

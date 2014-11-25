@@ -11,11 +11,26 @@ package matrizen;
  */
 public final class Point3 {
     
+    /***
+     * x - Koordinate des Punktes
+     */
     public final double x;
+    /***
+     * y - Koordinate des Punktes
+     */
     public final double y;
+    /***
+     * z - Koordinate des Punktes
+     */
     public final double z;
     
-    public Point3(double x, double y, double z){
+    /***
+     * Konstruktor fr die Erstellung eines Punktes im dreidimensionalen Raum
+     * @param x x - Koordinate
+     * @param y y - Koordinate
+     * @param z z - Koordinate
+     */
+    public Point3(final double x, final double y, final double z){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -32,9 +47,40 @@ public final class Point3 {
     public Point3 add(Vector3 v){
         return new Point3(x + v.x, y + v.y, z + v.z);
     }
-    
-    public boolean equals(Point3 p){
-        return p.x == x && p.y == y && p.z == z;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.z) ^ (Double.doubleToLongBits(this.z) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Point3 other = (Point3) obj;
+        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.z) != Double.doubleToLongBits(other.z)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Point3{" + "x=" + x + ", y=" + y + ", z=" + z + '}';
     }
     
 }
