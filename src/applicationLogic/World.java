@@ -5,18 +5,23 @@
  */
 package applicationLogic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Dominik
  */
-public abstract class Geometry {
+public class World {
     
-    public final Color color;
+    public final List<Geometry> geoList;
     
-    public Geometry(final Color color){
-        this.color = color;
+    public World(){
+        this.geoList = new ArrayList<>();
     }
     
-    public abstract Hit hit(final Ray ray);
+    public Hit hit(Ray ray){
+        return null;
+    }
     
 }

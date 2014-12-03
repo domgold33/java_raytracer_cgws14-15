@@ -9,14 +9,16 @@ package applicationLogic;
  *
  * @author Dominik
  */
-public abstract class Geometry {
+public class Hit {
     
-    public final Color color;
+    public final double t;
+    public final Ray ray;
+    public final Geometry geo;
     
-    public Geometry(final Color color){
-        this.color = color;
+    public Hit(final double t, final Ray ray, final Geometry geo){
+        this.t = t;
+        this.ray = ray;
+        this.geo = geo;
     }
-    
-    public abstract Hit hit(final Ray ray);
     
 }
