@@ -17,7 +17,7 @@ public class ImageMenuBar extends JMenuBar{
     public static final String SAVE_MESSAGE = "Save image";
     
     public ImageMenuBar(){
-        JButton saveButton = new JButton("Save");
+        final JButton saveButton = new JButton("Save");
         add(saveButton);
         saveButton.setActionCommand(SAVE_MESSAGE);
         saveButton.addActionListener(new MenuBarListener());

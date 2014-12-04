@@ -13,12 +13,10 @@ import javax.swing.JFrame;
  */
 public class CreateImageMain {
     
-    public static JFrame frame;
-    public static CreateImageCanvas canvas;
+    public static final JFrame frame = new JFrame("Draw an image");;
+    public static final CreateImageCanvas canvas = new CreateImageCanvas();;
     
     public static void main(String[] args){
-        canvas = new CreateImageCanvas();
-        frame = new JFrame("Draw an image");
         frame.setSize(640, 480);
         frame.add(canvas);
         frame.setJMenuBar(new ImageMenuBar());

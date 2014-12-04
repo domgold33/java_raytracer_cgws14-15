@@ -22,7 +22,7 @@ public class MenuBarListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String cmd = e.getActionCommand();
+        final String cmd = e.getActionCommand();
         if(e.getActionCommand().equals(ImageMenuBar.SAVE_MESSAGE)){
             saveImage();
         }
@@ -37,8 +37,8 @@ public class MenuBarListener implements ActionListener{
         chooser.addChoosableFileFilter(pngFilter);
         int returnVal = chooser.showSaveDialog(chooserFrame);
         if(returnVal == JFileChooser.APPROVE_OPTION){
-            String filePath = chooser.getSelectedFile().getAbsolutePath();
-            String extension = "." + chooser.getFileFilter().getDescription();
+            final String filePath = chooser.getSelectedFile().getAbsolutePath();
+            final String extension = "." + chooser.getFileFilter().getDescription();
             if(extension.equalsIgnoreCase(".png")){
                 try{
                     ImageIO.write(CreateImageMain.canvas.getImage(), "png", new File(filePath + extension));
