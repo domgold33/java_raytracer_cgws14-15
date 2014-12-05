@@ -29,10 +29,10 @@ public class MenuBarListener implements ActionListener{
     }
     
     public void saveImage(){
-        final JFrame chooserFrame = new JFrame("Save image");
-        final FileNameExtensionFilter jpgFilter = new FileNameExtensionFilter("jpg", "jpg");
-        final FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("png", "png");
-        final JFileChooser chooser = new JFileChooser("Save image");
+        JFrame chooserFrame = new JFrame();
+        FileNameExtensionFilter jpgFilter = new FileNameExtensionFilter("jpg", "jpg");
+        FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("png", "png");
+        JFileChooser chooser = new JFileChooser();
         chooser.addChoosableFileFilter(jpgFilter);
         chooser.addChoosableFileFilter(pngFilter);
         int returnVal = chooser.showSaveDialog(chooserFrame);

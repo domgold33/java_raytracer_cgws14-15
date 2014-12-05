@@ -35,8 +35,11 @@ public class LoadImageMain {
 
             @Override
             public boolean accept(File f) {
-                int lastIndexOf = f.getName().lastIndexOf(".");
-                String extension = f.getName().substring(lastIndexOf);
+                int lastIndexOf = f.getAbsolutePath().lastIndexOf(".");
+                if(lastIndexOf == -1){
+                    return false;
+                }
+                String extension = f.getAbsolutePath().substring(lastIndexOf);
                 return extension.equalsIgnoreCase(".jpg") || extension.equalsIgnoreCase(".jpeg") || extension.equalsIgnoreCase(".png");
             }
 
@@ -45,7 +48,7 @@ public class LoadImageMain {
                 return "JPG and PNG files";
             }
         };
-        fileShow.addChoosableFileFilter(filter);
+        fileShow.setFileFilter(filter);
         int returnVal = fileShow.showOpenDialog(frame);
         if(returnVal == JFileChooser.APPROVE_OPTION){
             createImagePanel(fileShow.getSelectedFile());
