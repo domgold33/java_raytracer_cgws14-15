@@ -41,13 +41,13 @@ public class MenuBarListener implements ActionListener{
             final String extension = "." + chooser.getFileFilter().getDescription();
             if(extension.equalsIgnoreCase(".png")){
                 try{
-                    ImageIO.write(CreateImageMain.canvas.getImage(), "png", new File(filePath + extension));
+                    ImageIO.write(CreateImageCanvas.image, "png", new File(filePath + extension));
                 }catch(IOException e){
                     System.err.println(e.getMessage());
                 }
             }else{
                 try{
-                    ImageIO.write(CreateImageMain.canvas.getImage(), "jpg", new File(filePath + extension));
+                    ImageIO.write(CreateImageCanvas.image, "jpg", new File(filePath + extension));
                 }catch(IOException e){
                     System.err.println(e.getMessage());
                 }
