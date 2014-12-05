@@ -18,7 +18,8 @@ public class World {
      * Enthält sämtliche Geometrien in dieser Welt.
      */
     public final List<Geometry> geoList;
-    
+
+    public int number;
     /**
      * Erzeugt eine neue Welt.
      */
