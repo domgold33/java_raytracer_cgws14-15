@@ -25,7 +25,19 @@ public class Plane extends Geometry{
 
     @Override
     public Hit hit(Ray ray) {
-        return null;
+         final double zaehler = this.a.sub(ray.o).dot(this.n);
+        final double nenner = ray.d.dot(this.n);
+        if(nenner != 0){
+            final double resultT = zaehler / nenner;
+            if(resultT > 0){
+                final Hit resultHit = new Hit(resultT, ray, this);
+                return resultHit;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     } 
     
 }
