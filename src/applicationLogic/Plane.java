@@ -17,12 +17,26 @@ public class Plane extends Geometry{
     public final Point3 a;
     public final Normal3 n;
     
+     /**
+     * Erzeugt eine neue Ebene.
+     * @param a Ein Punkt auf der Ebene.
+     * @param n Der Normalenvektor der Ebene.
+     * @param color Die Farbe der Ebene.
+     */
+    
     public Plane(final Point3 a, final Normal3 n, final Color color){
         super(color);
         this.a = a;
         this.n = n;
     }
-
+    
+    
+    /**
+     * Prüft, ob der übergebene Strahl diese Ebene schneidet.
+     * @param ray Strahl, für den überprüft werden soll, ob er die Ebene schneidet.
+     * @return Ein Hitobjekt, welches Daten für den Schnittpunkt enthält.
+     */
+    
     @Override
     public Hit hit(Ray ray) {
          final double zaehler = this.a.sub(ray.o).dot(this.n);
