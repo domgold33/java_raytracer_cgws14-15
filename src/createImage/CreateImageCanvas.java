@@ -6,11 +6,11 @@
 package createImage;
 
 import applicationLogic.Camera;
+import applicationLogic.Color;
 import applicationLogic.Hit;
 import applicationLogic.Ray;
 import applicationLogic.World;
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -42,9 +42,11 @@ public class CreateImageCanvas extends Canvas{
                 Ray ray = camera.rayFor(image.getWidth(), image.getHeight(), i, j);
                 Hit hit = world.hit(ray);
                 if(hit == null){
-                    raster.setDataElements(j, i, cm.getDataElements(j, null));
+                    float[] color = {(float)world.backgroundColor.r, (float)world.backgroundColor.g, (float)world.backgroundColor.b, 1.0f};
+                    raster.setDataElements(j, i, cm.getDataElements(color, 0, null));
                 }else{
-                    raster.setDataElements(j, i, cm.getDataElements(j, null));
+                    float[] color = {(float)hit.geo.color.r, (float) hit.geo.color.g, (float)hit.geo.color.b, 1.0f};
+                    raster.setDataElements(j, i, cm.getDataElements(color, 0, null));
                 }
             }
         }

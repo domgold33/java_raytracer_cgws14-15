@@ -18,13 +18,15 @@ public class World {
      * Enthält sämtliche Geometrien in dieser Welt.
      */
     public final List<Geometry> geoList;
-
-    public int number;
+    public final Color backgroundColor;
+    
     /**
      * Erzeugt eine neue Welt.
+     * @param backgroundColor Hintergrundfarbe der Welt.
      */
-    public World(){
+    public World(final Color backgroundColor){
         this.geoList = new ArrayList<>();
+        this.backgroundColor = backgroundColor;
     }
     
     /**

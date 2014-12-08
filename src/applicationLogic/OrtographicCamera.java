@@ -15,7 +15,7 @@ import matrizen.Vector3;
 public class OrtographicCamera extends Camera{
     
     /**
-     * Verschiebung der ortographischen Projektionsebene in Richtung der w - Achse
+     * Skalierungsfaktor
      */
     public final double s;
     
@@ -24,7 +24,7 @@ public class OrtographicCamera extends Camera{
      * @param e Position der ortographischen Kamera
      * @param g Blickrichtung der ortographischen Kamera
      * @param t Rotation der ortographischen Kamera
-     * @param s Verschiebung der Projektionsebene in Richtung der w - Achse
+     * @param s Skalierungsfaktor
      */
     public OrtographicCamera(final Point3 e, final Vector3 g, final Vector3 t, final double s){
         super(e, g, t);
