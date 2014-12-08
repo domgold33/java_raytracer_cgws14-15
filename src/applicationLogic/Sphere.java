@@ -13,9 +13,21 @@ import matrizen.Point3;
  */
 public class Sphere extends Geometry{
 
+    /**
+     * Mittelpunkt der Kugel.
+     */
     public final Point3 c;
+    /**
+     * Radius der Kugel.
+     */
     public final double r;
     
+    /**
+     * Erzeugt eine neue Kugel.
+     * @param c Mittelpunkt der Kugel.
+     * @param r Radius der Kugel.
+     * @param color Farbe der Kugel.
+     */
     public Sphere(final Point3 c, final double r, final Color color){
         super(color);
         this.c = c;

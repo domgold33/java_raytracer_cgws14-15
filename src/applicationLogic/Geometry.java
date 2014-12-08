@@ -11,8 +11,15 @@ package applicationLogic;
  */
 public abstract class Geometry {
     
+    /**
+     * Farbe der Geometrie.
+     */
     public final Color color;
     
+    /**
+     * Erzeugt eine neue Geometrie.
+     * @param color Farbe der Geometrie.
+     */
     public Geometry(final Color color){
         this.color = color;
     }
