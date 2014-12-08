@@ -39,7 +39,7 @@ public class CreateImageCanvas extends Canvas{
         ColorModel cm = image.getColorModel();
         for(int i = 0; i < image.getHeight(); i++){
             for(int j = 0; j < image.getWidth(); j++){
-                Ray ray = camera.rayFor(image.getWidth(), image.getHeight(), i, j);
+                Ray ray = camera.rayFor(image.getWidth(), image.getHeight(), j, i);
                 Hit hit = world.hit(ray);
                 if(hit == null){
                     float[] color = {(float)world.backgroundColor.r, (float)world.backgroundColor.g, (float)world.backgroundColor.b, 1.0f};

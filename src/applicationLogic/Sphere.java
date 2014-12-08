@@ -45,7 +45,7 @@ public class Sphere extends Geometry{
         if(resultA == 0){
             return null;
         }
-        final double resultB = ray.o.sub(this.c).mul(2).dot(ray.d);
+        final double resultB = ray.d.dot(ray.o.sub(this.c).mul(2));
         final double resultC = ray.o.sub(this.c).dot(ray.o.sub(this.c)) - this.r * this.r;
         final double zaehlerRoot = Math.sqrt(resultB * resultB  - 4 * resultA * resultC);
         if(zaehlerRoot < 0){

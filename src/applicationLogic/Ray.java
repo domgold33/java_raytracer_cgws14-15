@@ -49,6 +49,18 @@ public class Ray {
      * @return Den Koeffizienten des Richtungsvektors.
      */
     public double tOf(final Point3 p){
+        if(p.equals(o)){
+            return 0;
+        }
+        if(d.x != 0 && d.y != 0 && d.z != 0){
+            final double tX = (p.x - o.x) / d.x;
+            final double tY = (p.y - o.y) / d.y;
+            final double tZ = (p.z - o.z) / d.z;
+            if(tX == tY &&  tX == tZ){
+                return tX;
+            }
+        }
+        System.err.println("Punkt liegt nicht auf dem Strahl");
         return -1;
     }
     
