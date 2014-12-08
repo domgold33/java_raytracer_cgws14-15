@@ -39,7 +39,7 @@ public class World {
     public Hit hit(Ray ray){
         if(!geoList.isEmpty()){
             Hit resultHit = geoList.get(0).hit(ray);
-            for(int i = 0; i < geoList.size(); i++){
+            for(int i = 1; i < geoList.size(); i++){
                 final Hit tempHit = geoList.get(i).hit(ray);
                 if(resultHit == null){
                     resultHit = tempHit;
