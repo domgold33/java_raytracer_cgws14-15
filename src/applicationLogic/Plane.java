@@ -34,7 +34,7 @@ public class Plane extends Geometry{
         this.a = a;
         this.n = n;
     }
-
+    
     /**
      * Prüft, ob der übergebene Strahl diese Ebene schneidet.
      * @param ray Strahl, für den überprüft werden soll, ob er die Ebene schneidet.
