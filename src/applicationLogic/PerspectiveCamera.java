@@ -46,7 +46,7 @@ public class PerspectiveCamera extends Camera{
         final double resultUFactor = x - ((w - 1) / 2);   
         final double resultVFactor = y - ((h - 1) / 2);
         final Vector3 resultR = this.w.mul(-1).mul(resultWFactor).add(this.u.mul(resultUFactor).add(this.v.mul(resultVFactor)));
-        final Vector3 resultD = resultR.mul(1 / resultR.magnitude);
+        final Vector3 resultD = resultR.normalized();
         return new Ray(resultO, resultD);
     }
     
