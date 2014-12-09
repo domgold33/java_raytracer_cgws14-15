@@ -37,6 +37,8 @@ public class Plane extends Geometry{
      * @return Ein Hitobjekt, welches Daten für den Schnittpunkt enthält.
      */
     
+    
+    
     @Override
     public Hit hit(Ray ray) {
          final double zaehler = this.a.sub(ray.o).dot(this.n);
