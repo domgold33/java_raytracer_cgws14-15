@@ -42,10 +42,10 @@ public class OrtographicCamera extends Camera{
     @Override
     public Ray rayFor(final int w, final int h, final int x, final int y) {
         final Vector3 resultD = this.w.mul(-1);
-        final double aspectRatio = w / h;
-        final double resultUFactor = (x - (w - 1) / 2) / (w - 1) * aspectRatio * s;
-        final double resultVFactor = (y - (h - 1) / 2) / (h - 1) * s;
-        final Point3 resultO = this.e.add(this.u.mul(resultUFactor).add(this.v.mul(resultVFactor)));
+        final double aspectRatio = (double) w / h;
+        final double resultUFactor = (double) (x - (w - 1) / 2) / (w - 1) * aspectRatio * s;
+        final double resultVFactor = (double) (y - (h - 1) / 2) / (h - 1) * s;        
+        final Point3 resultO = this.e.add(this.u.mul(resultUFactor).add(this.v.mul(resultVFactor)));        
         return new Ray(resultO, resultD);
     }
     

@@ -63,5 +63,10 @@ public class Ray {
         System.err.println("Punkt liegt nicht auf dem Strahl");
         return -1;
     }
+
+    @Override
+    public String toString() {
+        return "Ray{" + "o=" + o + ", d=" + d + '}';
+    }
     
 }

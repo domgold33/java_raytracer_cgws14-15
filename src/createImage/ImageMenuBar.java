@@ -5,6 +5,7 @@
  */
 package createImage;
 
+import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 
@@ -16,11 +17,11 @@ public class ImageMenuBar extends JMenuBar{
     
     public static final String SAVE_MESSAGE = "Save image";
     
-    public ImageMenuBar(){
+    public ImageMenuBar(final CreateImageCanvas image){
         final JButton saveButton = new JButton("Save");
         add(saveButton);
         saveButton.setActionCommand(SAVE_MESSAGE);
-        saveButton.addActionListener(new MenuBarListener());
+        saveButton.addActionListener(new MenuBarListener(image));
     }
     
 }

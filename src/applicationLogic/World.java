@@ -36,7 +36,7 @@ public class World {
      * bei dem der Faktor t des Richtugsvektors den kleinsten positiven Wert annimmt. Gibt null zurück wenn7
      * kein Schnittpunkt gefunden wird oder diese Welt keine Geometrien enthält.
      */
-    public Hit hit(Ray ray){
+    public Hit hit(final Ray ray){
         if(!geoList.isEmpty()){
             Hit resultHit = geoList.get(0).hit(ray);
             for(int i = 1; i < geoList.size(); i++){
@@ -44,8 +44,10 @@ public class World {
                 if(resultHit == null){
                     resultHit = tempHit;
                 }else{
-                    if(tempHit.t < resultHit.t && tempHit.t > 0){
-                        resultHit = tempHit;
+                    if(tempHit != null){
+                        if(tempHit.t < resultHit.t && tempHit.t >= 0){
+                            resultHit = tempHit;
+                        }
                     }
                 }
             }

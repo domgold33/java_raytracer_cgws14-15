@@ -7,6 +7,7 @@ package createImage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -20,6 +21,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MenuBarListener implements ActionListener{
 
+    private final CreateImageCanvas image;
+    
+    public MenuBarListener(final CreateImageCanvas image){
+        this.image = image;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         final String cmd = e.getActionCommand();
@@ -41,13 +48,13 @@ public class MenuBarListener implements ActionListener{
             final String extension = "." + chooser.getFileFilter().getDescription();
             if(extension.equalsIgnoreCase(".png")){
                 try{
-                    ImageIO.write(CreateImageCanvas.image, "png", new File(filePath + extension));
+                    ImageIO.write(image.image, "png", new File(filePath + extension));
                 }catch(IOException e){
                     System.err.println(e.getMessage());
                 }
             }else{
                 try{
-                    ImageIO.write(CreateImageCanvas.image, "jpg", new File(filePath + extension));
+                    ImageIO.write(image.image, "jpg", new File(filePath + extension));
                 }catch(IOException e){
                     System.err.println(e.getMessage());
                 }

@@ -6,7 +6,6 @@
 package createImage;
 
 import applicationLogic.Camera;
-import applicationLogic.Color;
 import applicationLogic.Hit;
 import applicationLogic.Ray;
 import applicationLogic.World;
@@ -22,7 +21,7 @@ import java.awt.image.WritableRaster;
  */
 public class CreateImageCanvas extends Canvas{
     
-    public final static BufferedImage image = new BufferedImage(CreateImageMain.frame.getWidth(), CreateImageMain.frame.getHeight(), BufferedImage.TYPE_INT_ARGB);
+    public BufferedImage image; 
     
     private final World world;
     private Camera camera;
@@ -35,6 +34,7 @@ public class CreateImageCanvas extends Canvas{
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        image = new BufferedImage(CreateImageMain.frame.getWidth(), CreateImageMain.frame.getHeight() - 40, BufferedImage.TYPE_INT_ARGB);
         WritableRaster raster = image.getRaster();
         ColorModel cm = image.getColorModel();
         for(int i = 0; i < image.getHeight(); i++){
@@ -43,10 +43,10 @@ public class CreateImageCanvas extends Canvas{
                 Hit hit = world.hit(ray);
                 if(hit == null){
                     float[] color = {(float)world.backgroundColor.r, (float)world.backgroundColor.g, (float)world.backgroundColor.b, 1.0f};
-                    raster.setDataElements(j, i, cm.getDataElements(color, 0, null));
+                    raster.setDataElements(j, image.getHeight() - i - 1, cm.getDataElements(color, 0, null));
                 }else{
                     float[] color = {(float)hit.geo.color.r, (float) hit.geo.color.g, (float)hit.geo.color.b, 1.0f};
-                    raster.setDataElements(j, i, cm.getDataElements(color, 0, null));
+                    raster.setDataElements(j, image.getHeight() - i - 1, cm.getDataElements(color, 0, null));
                 }
             }
         }
