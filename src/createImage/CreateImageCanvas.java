@@ -5,7 +5,7 @@
  */
 package createImage;
 
-import applicationLogic.Camera;
+import applicationLogic.camera.Camera;
 import applicationLogic.Hit;
 import applicationLogic.Ray;
 import applicationLogic.World;
@@ -45,7 +45,7 @@ public class CreateImageCanvas extends Canvas{
                     float[] color = {(float)world.backgroundColor.r, (float)world.backgroundColor.g, (float)world.backgroundColor.b, 1.0f};
                     raster.setDataElements(j, image.getHeight() - i - 1, cm.getDataElements(color, 0, null));
                 }else{
-                    float[] color = {(float)hit.geo.color.r, (float) hit.geo.color.g, (float)hit.geo.color.b, 1.0f};
+                    float[] color = {(float)hit.geo.material.colorFor(hit, world).r, (float) hit.geo.material.colorFor(hit, world).g, (float)hit.geo.material.colorFor(hit, world).b, 1.0f};
                     raster.setDataElements(j, image.getHeight() - i - 1, cm.getDataElements(color, 0, null));
                 }
             }

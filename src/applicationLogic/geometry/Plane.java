@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
+package applicationLogic.geometry;
 
+import applicationLogic.Hit;
+import applicationLogic.Ray;
+import applicationLogic.material.Material;
 import matrizen.Normal3;
 import matrizen.Point3;
 
@@ -27,10 +30,10 @@ public class Plane extends Geometry{
      * Erzeugt eine neue Ebene.
      * @param a Ein Punkt auf der Ebene.
      * @param n Der Normalenvektor der Ebene.
-     * @param color Die Farbe der Ebene.
+     * @param material Material der Ebene.
      */
-    public Plane(final Point3 a, final Normal3 n, final Color color){
-        super(color);
+    public Plane(final Point3 a, final Normal3 n, final Material material){
+        super(material);
         this.a = a;
         this.n = n;
     }

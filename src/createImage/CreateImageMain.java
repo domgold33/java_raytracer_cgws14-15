@@ -5,13 +5,13 @@
  */
 package createImage;
 
-import applicationLogic.Camera;
+import applicationLogic.camera.Camera;
 import applicationLogic.Color;
-import applicationLogic.Geometry;
-import applicationLogic.OrtographicCamera;
-import applicationLogic.PerspectiveCamera;
-import applicationLogic.Plane;
-import applicationLogic.Sphere;
+import applicationLogic.geometry.Geometry;
+import applicationLogic.camera.OrtographicCamera;
+import applicationLogic.camera.PerspectiveCamera;
+import applicationLogic.geometry.Plane;
+import applicationLogic.geometry.Sphere;
 import applicationLogic.World;
 import javax.swing.JFrame;
 import matrizen.Normal3;
@@ -28,7 +28,7 @@ public class CreateImageMain {
     
     public static void main(String[] args){
         frame.setSize(640, 520);
-        final World world = new World(new Color(0, 0, 0));
+/*        final World world = new World(new Color(0, 0, 0));
         final Camera camera1 = new PerspectiveCamera(new Point3(0, 0, 0), new Vector3(0, 0, -1), new Vector3(0, 1, 0), Math.PI / 4);
         final Camera camera2 = new OrtographicCamera(new Point3(0, 0, 0), new Vector3(0, 0, -1), new Vector3(0, 1, 0), 3);
 //        Kriterium 1
@@ -44,7 +44,7 @@ public class CreateImageMain {
         CreateImageCanvas canvas = new CreateImageCanvas(world, camera1);
         //Kriterium 4
         CreateImageCanvas canvas2 = new CreateImageCanvas(world, camera2);
-        frame.add(canvas2);
+        frame.add(canvas2);*/
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.setJMenuBar(new ImageMenuBar(canvas2));
         frame.setVisible(true);

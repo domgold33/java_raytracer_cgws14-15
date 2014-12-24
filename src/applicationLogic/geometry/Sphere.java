@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
+package applicationLogic.geometry;
 
+import applicationLogic.Hit;
+import applicationLogic.Ray;
+import applicationLogic.material.Material;
 import matrizen.Point3;
 
 /**
@@ -26,10 +29,10 @@ public class Sphere extends Geometry{
      * Erzeugt eine neue Kugel.
      * @param c Mittelpunkt der Kugel.
      * @param r Radius der Kugel.
-     * @param color Farbe der Kugel.
+     * @param material Material der Kugel.
      */
-    public Sphere(final Point3 c, final double r, final Color color){
-        super(color);
+    public Sphere(final Point3 c, final double r, final Material material){
+        super(material);
         this.c = c;
         this.r = r;
     }

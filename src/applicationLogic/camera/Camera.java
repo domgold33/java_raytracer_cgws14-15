@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
+package applicationLogic.camera;
 
+import applicationLogic.Ray;
 import matrizen.Point3;
 import matrizen.Vector3;
 

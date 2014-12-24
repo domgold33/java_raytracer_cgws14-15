@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package applicationLogic;
+package applicationLogic.geometry;
+
+import applicationLogic.Hit;
+import applicationLogic.Ray;
+import applicationLogic.material.Material;
 
 /**
  *
@@ -12,16 +16,16 @@ package applicationLogic;
 public abstract class Geometry {
     
     /**
-     * Farbe der Geometrie.
+     * Material der Geometrie.
      */
-    public final Color color;
+    public final Material material;
     
     /**
      * Erzeugt eine neue Geometrie.
-     * @param color Farbe der Geometrie.
+     * @param material Material der Geometrie.
      */
-    public Geometry(final Color color){
-        this.color = color;
+    public Geometry(final Material material){
+        this.material = material;
     }
     
     public abstract Hit hit(final Ray ray);

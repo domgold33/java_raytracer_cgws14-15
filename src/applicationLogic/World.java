@@ -5,6 +5,8 @@
  */
 package applicationLogic;
 
+import applicationLogic.geometry.Geometry;
+import applicationLogic.lighting.Light;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,15 +20,20 @@ public class World {
      * Enthält sämtliche Geometrien in dieser Welt.
      */
     public final List<Geometry> geoList;
+    public final List<Light> lightList;
     public final Color backgroundColor;
+    public final Color ambientLight;
     
     /**
      * Erzeugt eine neue Welt.
      * @param backgroundColor Hintergrundfarbe der Welt.
+     * @param ambient Ambientes Licht der Welt.
      */
-    public World(final Color backgroundColor){
+    public World(final Color backgroundColor, final Color ambient){
         this.geoList = new ArrayList<>();
+        this.lightList = new ArrayList<>();
         this.backgroundColor = backgroundColor;
+        this.ambientLight = ambient;
     }
     
     /**
