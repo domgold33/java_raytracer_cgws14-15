@@ -6,9 +6,8 @@
 package applicationLogic;
 
 import applicationLogic.geometry.Geometry;
+import java.util.Objects;
 import matrizen.Normal3;
-import matrizen.Point3;
-import matrizen.Vector3;
 
 /**
  *
@@ -41,14 +40,52 @@ public class Hit {
      * zu gelangen.
      * @param ray Strahl, der durch den Schnittpunkt verläuft.
      * @param geo Geometrie, auf der sich der Schnittpunkt befindet.
+     * @param n Normale des Schnittpunkts
      */
-    public Hit(final double t, final Ray ray, final Geometry geo){
+    public Hit(final double t, final Ray ray, final Geometry geo, final Normal3 n){
         this.t = t;
         this.ray = ray;
         this.geo = geo;
-        final Point3 p = ray.o.add(ray.d.mul(t));
-        final Vector3 v = new Vector3(p.x, p.y, p.z);
-        this.normal = v.x(v).asNormal();
+        this.normal = n;
+    }
+
+    @Override
+    public String toString() {
+        return "Hit{" + "t=" + t + ", ray=" + ray + ", normal=" + normal + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.t) ^ (Double.doubleToLongBits(this.t) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.ray);
+        hash = 29 * hash + Objects.hashCode(this.normal);
+        hash = 29 * hash + Objects.hashCode(this.geo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hit other = (Hit) obj;
+        if (Double.doubleToLongBits(this.t) != Double.doubleToLongBits(other.t)) {
+            return false;
+        }
+        if (!Objects.equals(this.ray, other.ray)) {
+            return false;
+        }
+        if (!Objects.equals(this.normal, other.normal)) {
+            return false;
+        }
+        if (!Objects.equals(this.geo, other.geo)) {
+            return false;
+        }
+        return true;
     }
     
 }

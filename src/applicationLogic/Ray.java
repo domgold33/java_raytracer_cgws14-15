@@ -5,6 +5,7 @@
  */
 package applicationLogic;
 
+import java.util.Objects;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -67,6 +68,32 @@ public class Ray {
     @Override
     public String toString() {
         return "Ray{" + "o=" + o + ", d=" + d + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.o);
+        hash = 71 * hash + Objects.hashCode(this.d);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ray other = (Ray) obj;
+        if (!Objects.equals(this.o, other.o)) {
+            return false;
+        }
+        if (!Objects.equals(this.d, other.d)) {
+            return false;
+        }
+        return true;
     }
     
 }

@@ -8,6 +8,7 @@ package applicationLogic.geometry;
 import applicationLogic.Hit;
 import applicationLogic.Ray;
 import applicationLogic.material.Material;
+import java.util.Objects;
 import matrizen.Normal3;
 import matrizen.Point3;
 
@@ -50,7 +51,7 @@ public class Plane extends Geometry{
         if(nenner != 0){
             final double resultT = zaehler / nenner;
             if(resultT >= 0){
-                final Hit resultHit = new Hit(resultT, ray, this);
+                final Hit resultHit = new Hit(resultT, ray, this, this.n);
                 return resultHit;
             }else{
                 return null;
@@ -59,5 +60,36 @@ public class Plane extends Geometry{
             return null;
         }
     } 
+
+    @Override
+    public String toString() {
+        return "Plane{" + "a=" + a + ", n=" + n + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.a);
+        hash = 29 * hash + Objects.hashCode(this.n);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Plane other = (Plane) obj;
+        if (!Objects.equals(this.a, other.a)) {
+            return false;
+        }
+        if (!Objects.equals(this.n, other.n)) {
+            return false;
+        }
+        return true;
+    }
     
 }

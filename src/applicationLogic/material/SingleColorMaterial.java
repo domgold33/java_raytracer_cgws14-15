@@ -8,6 +8,7 @@ package applicationLogic.material;
 import applicationLogic.Color;
 import applicationLogic.Hit;
 import applicationLogic.World;
+import java.util.Objects;
 
 /**
  *
@@ -29,8 +30,35 @@ public class SingleColorMaterial extends Material{
     }
 
     @Override
-    public Color colorFor(final Hit hit,final World world) {
+    public Color colorFor(final Hit hit, final World world) {
         return color;
+    }
+
+    @Override
+    public String toString() {
+        return "SingleColorMaterial{" + "color=" + color + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.color);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SingleColorMaterial other = (SingleColorMaterial) obj;
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        return true;
     }
    
 }

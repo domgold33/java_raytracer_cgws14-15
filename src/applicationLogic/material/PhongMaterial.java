@@ -9,7 +9,10 @@ import applicationLogic.Color;
 import applicationLogic.Hit;
 import applicationLogic.World;
 import applicationLogic.lighting.Light;
+import java.util.Objects;
+import matrizen.Normal3;
 import matrizen.Point3;
+import matrizen.Vector3;
 
 /**
  *
@@ -45,15 +48,54 @@ public class PhongMaterial extends Material{
 
     @Override
     public Color colorFor(final Hit hit, final World world) {
-        Color color = diffuse.add(world.ambientLight);
+        Color color = diffuse.mul(world.ambientLight);
         final Point3 p = hit.ray.o.add(hit.ray.d.mul(hit.t));
+        final Normal3 n = hit.normal;
+        final Vector3 e = hit.ray.d;
         for(Light light : world.lightList){
             if(light.illuminates(p)){
-                color = color.add(diffuse.mul(light.color).mul(Math.max(0, hit.normal.dot(light.directionFrom(p))))
-                        .add(specular.mul(light.color).mul(Math.pow(Math.max(0, hit.normal.dot(light.directionFrom(p))), exponent))));
+                Vector3 rl = light.directionFrom(p).reflectedOn(hit.normal);
+                Vector3 l = light.directionFrom(p);
+                color = color.add(diffuse.mul(light.color).mul(Math.max(0, n.dot(l)))
+                        .add(specular.mul(light.color).mul(Math.pow(Math.max(0, e.dot(rl)), exponent))));
             }
         }
         return color;
+    }
+
+    @Override
+    public String toString() {
+        return "PhongMaterial{" + "diffuse=" + diffuse + ", specular=" + specular + ", exponent=" + exponent + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + Objects.hashCode(this.diffuse);
+        hash = 73 * hash + Objects.hashCode(this.specular);
+        hash = 73 * hash + this.exponent;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PhongMaterial other = (PhongMaterial) obj;
+        if (!Objects.equals(this.diffuse, other.diffuse)) {
+            return false;
+        }
+        if (!Objects.equals(this.specular, other.specular)) {
+            return false;
+        }
+        if (this.exponent != other.exponent) {
+            return false;
+        }
+        return true;
     }
     
 }

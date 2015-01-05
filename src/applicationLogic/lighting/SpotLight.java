@@ -56,7 +56,7 @@ public class SpotLight extends Light{
     
     @Override
     public Vector3 directionFrom(final Point3 p){
-        return p.sub(position);
+        return position.sub(p).normalized();
     }
     
 }

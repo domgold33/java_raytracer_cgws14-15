@@ -37,7 +37,7 @@ public class PointLight extends Light{
 
     @Override
     public Vector3 directionFrom(Point3 p) {
-        return p.sub(position);
+        return position.sub(p).normalized();
     }
     
     
