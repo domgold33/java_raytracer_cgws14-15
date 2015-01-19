@@ -61,7 +61,7 @@ public class Sphere extends Geometry{
         final double resultNenner = 2 * resultA;
         final double resultT1 = resultZaehler1 / resultNenner;
         final double resultT2 = resultZaehler2 / resultNenner;
-        if(resultT1 > 0 || resultT2 > 0){
+        if(resultT1 > 0.0001 || resultT2 > 0.0001){
             final double t = Math.min(resultT1, resultT2);
             final Normal3 normal = ray.at(t).sub(this.c).normalized().asNormal();
             return new Hit(t, ray, this, normal);

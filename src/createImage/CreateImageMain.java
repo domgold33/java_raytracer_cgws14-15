@@ -41,8 +41,8 @@ public class CreateImageMain {
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new SingleColorMaterial(new Color(1, 0, 0))));
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new SingleColorMaterial(new Color(0, 1, 0))));
         //LambertMaterial
-//        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new LambertMaterial(new Color(1, 0, 0))));
-//        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new LambertMaterial(new Color(0, 1, 0))));
+        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new LambertMaterial(new Color(1, 0, 0))));
+        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new LambertMaterial(new Color(0, 1, 0))));
         //PhongMaterial
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new PhongMaterial(new Color(0, 1, 0), new Color(1, 1, 1), 64)));
@@ -50,20 +50,20 @@ public class CreateImageMain {
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new BlinnPhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new BlinnPhongMaterial(new Color(0, 1, 0), new Color(1, 1, 1), 64)));
         //PointLight
-//        final PointLight light = new PointLight(new Color(0.75, 0.75, 0.75), new Point3(3, 3, 3));
+        final PointLight light = new PointLight(new Color(0.75, 0.75, 0.75), new Point3(3, 3, 0));
         //DirectionalLight
-//        final DirectionalLight light = new DirectionalLight(new Color(0.5, 0.5, 0.5), new Vector3(-1, -1, -1));
+//        final DirectionalLight light = new DirectionalLight(new Color(0.5, 0.5, 0.5), new Vector3(-1, -3, -1));
         //SpotLight
+//        final SpotLight light = new SpotLight(new Color(0.5, 0.5, 0.5), new Point3(4, 4, 3), new Vector3(-1, -1, -1), Math.PI / 14);
+        world.lightList.add(light);
+        //Eigene Szene
+//        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new LambertMaterial(new Color(0, 1, 0))));
+//        world.geoList.add(new Sphere(new Point3(0.5, 1, 1), 0.5, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
+//        world.geoList.add(new Sphere(new Point3(2, 2, 0.5), 0.5, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
 //        final SpotLight light = new SpotLight(new Color(0.5, 0.5, 0.5), new Point3(4, 4, 4), new Vector3(-1, -1, -1), Math.PI / 14);
 //        world.lightList.add(light);
-        //Eigene Szene
-        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new LambertMaterial(new Color(0, 1, 0))));
-        world.geoList.add(new Sphere(new Point3(0.5, 1, 1), 0.5, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
-        world.geoList.add(new Sphere(new Point3(2, 2, 0.5), 0.5, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
-        final SpotLight light = new SpotLight(new Color(0.5, 0.5, 0.5), new Point3(4, 4, 4), new Vector3(-1, -1, -1), Math.PI / 14);
-        world.lightList.add(light);
-        world.lightList.add(new DirectionalLight(new Color(0.25, 0.25, 0.25), new Vector3(-1, 0, -1)));
-        world.lightList.add(new PointLight(new Color(0.25, 0.25, 0.25), new Point3(3, 8, 0)));
+//        world.lightList.add(new DirectionalLight(new Color(0.25, 0.25, 0.25), new Vector3(-1, 0, -1)));
+//        world.lightList.add(new PointLight(new Color(0.25, 0.25, 0.25), new Point3(3, 8, 0)));
         final CreateImageCanvas canvas = new CreateImageCanvas(world, camera);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(canvas);

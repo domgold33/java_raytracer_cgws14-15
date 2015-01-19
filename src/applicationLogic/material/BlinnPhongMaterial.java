@@ -48,7 +48,7 @@ public class BlinnPhongMaterial extends Material{
         Color colorFor = diffuse.mul(world.ambientLight);
         final Point3 p = hit.ray.at(hit.t);
         for(Light light : world.lightList){
-            if(light.illuminates(p)){
+            if(light.illuminates(p, world)){
                 final Vector3 l = light.directionFrom(p);
                 final Vector3 h = l.add(hit.ray.d.mul(-1).normalized()).normalized();
                 colorFor = colorFor.add(light.color.mul(this.diffuse).mul(Math.max(0, l.dot(hit.normal)))

@@ -6,6 +6,10 @@
 package applicationLogic.lighting;
 
 import applicationLogic.Color;
+import applicationLogic.Hit;
+import applicationLogic.Ray;
+import applicationLogic.World;
+import applicationLogic.geometry.Geometry;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -44,14 +48,28 @@ public class SpotLight extends Light{
     }
     
     @Override
-    public boolean illuminates(final Point3 p){
+    public boolean illuminates(final Point3 p, final World world){
         /*Vektor zu Punkt berechnen, überprüfen mittels Skalarprodukt, ob Winkel zwischen neuem Vektor und
         Richtungsvektor des Lichts kleiner halfAngle ist.
         */
         final Vector3 connection = p.sub(position);
         final double skalar = connection.dot(direction);
         final double newAngle = Math.acos(skalar / (connection.magnitude * direction.magnitude));
-        return newAngle <= halfAngle;
+        boolean illuminates = newAngle <= halfAngle;
+        if(!illuminates){
+            return illuminates;
+        }
+        final Vector3 l = this.directionFrom(p);
+        final double lightT = this.position.sub(p).magnitude / l.magnitude;
+        final Ray ray = new Ray(p, l);
+        for(Geometry geo : world.geoList){
+            final Hit hit = geo.hit(ray);
+            if(hit != null){
+                illuminates = hit.t >= lightT;
+                break;
+            }
+        }
+        return illuminates;
     }
     
     @Override

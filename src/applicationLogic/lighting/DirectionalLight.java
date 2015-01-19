@@ -6,6 +6,9 @@
 package applicationLogic.lighting;
 
 import applicationLogic.Color;
+import applicationLogic.Ray;
+import applicationLogic.World;
+import applicationLogic.geometry.Geometry;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -31,12 +34,17 @@ public class DirectionalLight extends Light{
     }
     
     @Override
-    public boolean illuminates(Point3 p) {
-        return true;
+    public boolean illuminates(final Point3 p, final World world) {
+        boolean illuminates = true;
+        final Ray ray = new Ray(p, this.directionFrom(p));
+        if(world.hit(ray) != null){
+            illuminates = false;
+        }
+        return illuminates;
     }
 
     @Override
-    public Vector3 directionFrom(Point3 p) {
+    public Vector3 directionFrom(final Point3 p) {
         return direction.mul(-1).normalized();
     }
     

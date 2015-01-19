@@ -39,7 +39,7 @@ public class LambertMaterial extends Material{
         final Point3 p = hit.ray.at(hit.t);
         final Normal3 n = hit.normal;
         for (Light light : world.lightList) {
-            if(light.illuminates(p)){
+            if(light.illuminates(p, world)){
                 final Vector3 l = light.directionFrom(p);
                 colorFor = colorFor.add(color.mul(light.color).mul(Math.max(0, n.dot(l))));
             }

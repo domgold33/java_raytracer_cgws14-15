@@ -6,6 +6,7 @@
 package applicationLogic.lighting;
 
 import applicationLogic.Color;
+import applicationLogic.World;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -31,9 +32,10 @@ public abstract class Light {
     /**
      * Prüft, ob diese Lichtquelle den übergebenen Punkt beleuchtet.
      * @param p Punkt, für den die Beleuchtung überprüft werden soll.
+     * @param world Welt, in der sich die Lichtquelle befindet
      * @return True falls der Punkt beleuchtet wird.
      */
-    public abstract boolean illuminates(final Point3 p);
+    public abstract boolean illuminates(final Point3 p, final World world);
     
     /**
      * Ermittelt den Vektor zwischen dem übergebenen Punkt und der Lichtquelle.

@@ -52,7 +52,7 @@ public class World {
                     resultHit = tempHit;
                 }else{
                     if(tempHit != null){
-                        if(tempHit.t < resultHit.t && tempHit.t >= 0){
+                        if(tempHit.t < resultHit.t){
                             resultHit = tempHit;
                         }
                     }

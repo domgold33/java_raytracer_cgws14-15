@@ -6,6 +6,10 @@
 package applicationLogic.lighting;
 
 import applicationLogic.Color;
+import applicationLogic.Hit;
+import applicationLogic.Ray;
+import applicationLogic.World;
+import applicationLogic.geometry.Geometry;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -31,12 +35,23 @@ public class PointLight extends Light{
     }
     
     @Override
-    public boolean illuminates(Point3 p) {
-        return true;
+    public boolean illuminates(final Point3 p, final World world) {
+        boolean illuminates = true;
+        final Vector3 l = this.directionFrom(p);
+        final double lightT = this.position.sub(p).magnitude / l.magnitude;
+        final Ray ray = new Ray(p, l);
+        for(Geometry geo : world.geoList){
+            final Hit hit = geo.hit(ray);
+            if(hit != null){
+                illuminates = hit.t >= lightT;
+                break;
+            }
+        }
+        return illuminates;
     }
 
     @Override
-    public Vector3 directionFrom(Point3 p) {
+    public Vector3 directionFrom(final Point3 p) {
         return position.sub(p).normalized();
     }
     
