@@ -28,15 +28,13 @@ public class Plane extends Geometry{
     public final Normal3 n;
     
     /**
-     * Erzeugt eine neue Ebene.
-     * @param a Ein Punkt auf der Ebene.
-     * @param n Der Normalenvektor der Ebene.
+     * Erzeugt eine neue Ebene auf der XZ - Ebene.
      * @param material Material der Ebene.
      */
-    public Plane(final Point3 a, final Normal3 n, final Material material){
+    public Plane(final Material material){
         super(material);
-        this.a = a;
-        this.n = n;
+        this.a = new Point3(0, 0, 0);
+        this.n = new Normal3(0, 1, 0);
     }
     
     /**

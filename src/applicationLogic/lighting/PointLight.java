@@ -44,7 +44,9 @@ public class PointLight extends Light{
             final Hit hit = geo.hit(ray);
             if(hit != null){
                 illuminates = hit.t >= lightT;
-                break;
+                if(illuminates){
+                    break;
+                }
             }
         }
         return illuminates;
