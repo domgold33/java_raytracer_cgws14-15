@@ -34,7 +34,8 @@ public class CreateImageCanvas extends Canvas{
     @Override
     public void paint(Graphics g){
         super.paint(g);
-        image = new BufferedImage(CreateImageMain.frame.getWidth(), CreateImageMain.frame.getHeight() - 60, BufferedImage.TYPE_INT_ARGB);
+        image = new BufferedImage(CreateImageMain.frame.getWidth(), CreateImageMain.frame.getHeight() - 60, BufferedImage.TYPE_INT_ARGB);        
+        g.drawImage(image, 0, 0, null);
         WritableRaster raster = image.getRaster();
         ColorModel cm = image.getColorModel();
         for(int i = 0; i < image.getHeight(); i++){

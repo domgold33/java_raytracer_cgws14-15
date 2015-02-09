@@ -49,8 +49,14 @@ public class Transform {
      * @return Ein neues Transformationsobjekt entstehend aus diesem und der erzeugten Translationsmatrix.
      */
     public Transform translate(final double x, final double y, final double z) {
-        Transform t = new Transform(new Mat4x4(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, z, 0, 0, 0, 1),
-                                    new Mat4x4(1, 0, 0, -x, 0, 1, 0, -y, 0, 0, 1, -z, 0, 0, 0, 1));
+        Transform t = new Transform(new Mat4x4(1, 0, 0, x,
+                                               0, 1, 0, y,
+                                               0, 0, 1, z,
+                                               0, 0, 0, 1),
+                                    new Mat4x4(1, 0, 0, -x,
+                                               0, 1, 0, -y,
+                                               0, 0, 1, -z,
+                                               0, 0, 0, 1));
         return new Transform(m.mul(t.m), t.mInverse.mul(mInverse));
     }
     
@@ -64,8 +70,14 @@ public class Transform {
      */
     public Transform scale(final double sx, final double sy, final double sz){
         Transform t = new Transform(
-                new Mat4x4(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1),
-                new Mat4x4(1/sx, 0, 0, 0, 0, 1/sy, 0, 0, 0, 0, 1/sz, 0, 0, 0, 0, 1));
+                new Mat4x4(sx, 0, 0, 0,
+                           0, sy, 0, 0,
+                           0, 0, sz, 0,
+                           0, 0, 0, 1),
+                new Mat4x4(1/sx, 0, 0, 0,
+                           0, 1/sy, 0, 0,
+                           0, 0, 1/sz, 0,
+                           0, 0, 0, 1));
 
         return new Transform(m.mul(t.m), t.mInverse.mul(mInverse));
     }

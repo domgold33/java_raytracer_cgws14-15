@@ -9,9 +9,9 @@ import applicationLogic.Color;
 import applicationLogic.World;
 import applicationLogic.camera.Camera;
 import applicationLogic.camera.PerspectiveCamera;
+import applicationLogic.geometry.AxisAlignedBox;
 import applicationLogic.geometry.Geometry;
 import applicationLogic.geometry.Node;
-import applicationLogic.geometry.Sphere;
 import applicationLogic.lighting.PointLight;
 import applicationLogic.material.PhongMaterial;
 import applicationLogic.material.SingleColorMaterial;
@@ -45,9 +45,9 @@ public class CreateImageMain {
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 1.0, new LambertMaterial(new Color(0, 1, 0))));
         //PhongMaterial
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
-        geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
+        geoList.add(new AxisAlignedBox(new PhongMaterial(new Color(1, 1, 0), new Color(1, 1, 1), 64)));
         final Transform transform = new Transform();
-        world.geoList.add(new Node(transform.scale(1, 1, 1).rotateX(Math.PI/2), geoList, new SingleColorMaterial(new Color(1, 0, 0))));
+        world.geoList.add(new Node(transform.rotateZ(Math.PI/4).scale(0.25,1,3), geoList, new SingleColorMaterial(new Color(1, 0, 0))));
         //BlinnPhongMaterial
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new BlinnPhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 0.5, new BlinnPhongMaterial(new Color(0, 1, 0), new Color(1, 1, 1), 64)));

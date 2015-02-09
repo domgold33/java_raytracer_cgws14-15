@@ -29,14 +29,12 @@ public class Sphere extends Geometry{
     
     /**
      * Erzeugt eine neue Kugel.
-     * @param c Mittelpunkt der Kugel.
-     * @param r Radius der Kugel.
      * @param material Material der Kugel.
      */
-    public Sphere(final Point3 c, final double r, final Material material){
+    public Sphere(final Material material){
         super(material);
-        this.c = c;
-        this.r = r;
+        this.c = new Point3(0, 0, 0);
+        this.r = 0.5;
     }
 
     /**

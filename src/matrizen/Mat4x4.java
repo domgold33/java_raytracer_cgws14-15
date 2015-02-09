@@ -76,9 +76,10 @@ public class Mat4x4 {
      */
     public final double dd;
 
-    public Mat4x4(final double aa, final double ab, final double ac, final double ad, final double ba,
-            final double bb, final double bc, final double bd, final double ca, final double cb, final double cc,
-            final double cd, final double da, final double db, final double dc, final double dd) {
+    public Mat4x4(final double aa, final double ab, final double ac, final double ad,
+                  final double ba, final double bb, final double bc, final double bd,
+                  final double ca, final double cb, final double cc, final double cd,
+                  final double da, final double db, final double dc, final double dd) {
         this.aa = aa;
         this.ab = ab;
         this.ac = ac;
