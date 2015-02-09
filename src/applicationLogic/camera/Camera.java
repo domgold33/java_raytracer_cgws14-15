@@ -6,6 +6,8 @@
 package applicationLogic.camera;
 
 import applicationLogic.Ray;
+import applicationLogic.SamplingPattern;
+import java.util.List;
 import matrizen.Point3;
 import matrizen.Vector3;
 
@@ -39,30 +41,36 @@ public abstract class Camera {
      * w - Achse des neu aufgespannten Koordinatensystems
      */
     public final Vector3 w;
+    /**
+     * Optionales SamplingPattern zum Anti-Aliasing
+     */
+    public final SamplingPattern sp;
     
     /**
      * Erzeugt eine neue Kamera.
      * @param e Position der Kamera
      * @param g Blickrichtung der Kamera
      * @param t Rotation der Kamera
-     */
-    public Camera(final Point3 e, final Vector3 g, final Vector3 t){
+     * @param sp SamplingPattern der Kamera
+     */    
+    public Camera(final Point3 e, final Vector3 g, final Vector3 t, final SamplingPattern sp){
         this.e = e;
         this.g = g;
         this.t = t;
         this.w = g.normalized().mul(-1);
         this.u = t.x(w).normalized();
         this.v = w.x(u);
+        this.sp = sp;
     }
     
     /**
-     * Erzeugt einen Strahl für die übergebenen Pixelwerte.
+     * Erzeugt eine Liste von Strahlen für die übergebenen Pixelwerte.
      * @param w Breite des Bildes
      * @param h Höhe des Bildes
      * @param x x - Koordinate des Pixels
      * @param y y - Koordinate des Pixels
-     * @return Den zum Pixel zugehörigen Strahl.
+     * @return Die zum Pixel zugehörigen Strahlen.
      */
-    public abstract Ray rayFor(final int w, final int h, final int x, final int y);
+    public abstract List<Ray> rayFor(final int w, final int h, final int x, final int y);
     
 }

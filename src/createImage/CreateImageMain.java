@@ -6,6 +6,7 @@
 package createImage;
 
 import applicationLogic.Color;
+import applicationLogic.SamplingPattern;
 import applicationLogic.World;
 import applicationLogic.camera.Camera;
 import applicationLogic.camera.PerspectiveCamera;
@@ -36,7 +37,7 @@ public class CreateImageMain {
         //World mit ambient light
         final World world = new World(new Color(0, 0, 0), new Color(0.25, 0.25, 0.25));
         final Camera camera = new PerspectiveCamera(new Point3(4, 4, 4), new Vector3(-1, -1, -1),
-                              new Vector3(0, 1, 0), Math.PI / 4);
+                              new Vector3(0, 1, 0), new SamplingPattern(1), Math.PI / 4);
         final ArrayList<Geometry> geoList = new ArrayList<>();
         //SingleColorMaterial
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new SingleColorMaterial(new Color(1, 0, 0))));
