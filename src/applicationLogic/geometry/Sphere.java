@@ -36,6 +36,12 @@ public class Sphere extends Geometry{
         this.c = new Point3(0, 0, 0);
         this.r = 0.5;
     }
+    
+    public Sphere(final Point3 c, final double r, final Material material){
+        super(material);
+        this.c = c;
+        this.r = r;
+    }
 
     /**
      * Prüft, ob der übergebene Strahl diese Kugel schneidet.

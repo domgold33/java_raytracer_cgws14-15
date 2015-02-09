@@ -23,6 +23,7 @@ public class World {
     public final List<Light> lightList;
     public final Color backgroundColor;
     public final Color ambientLight;
+    public final double refraction;
     
     /**
      * Erzeugt eine neue Welt.
@@ -34,6 +35,7 @@ public class World {
         this.lightList = new ArrayList<>();
         this.backgroundColor = backgroundColor;
         this.ambientLight = ambient;
+        this.refraction = 2;
     }
     
     /**

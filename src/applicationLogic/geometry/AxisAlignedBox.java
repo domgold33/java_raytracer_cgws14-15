@@ -69,6 +69,20 @@ public class AxisAlignedBox extends Geometry{
         front = new Node(new Transform().translate(this.rup.x, this.rup.y, this.rup.z).rotateZ(Math.PI).rotateX(Math.PI/2), geos, this.material);
     }
     
+    public AxisAlignedBox(final Point3 lbp, final Point3 rup, final Material material){
+        super(material);
+        this.lbp = lbp;
+        this.rup = rup;
+        ArrayList<Geometry> geos = new ArrayList<>();
+        geos.add(new Plane(material));
+        left = new Node(new Transform().translate(this.lbp.x, this.lbp.y, this.lbp.z).rotateZ(Math.PI/2), geos, this.material);
+        bottom =  new Node(new Transform().translate(this.lbp.x, this.lbp.y, this.lbp.z).rotateX(Math.PI), geos, this.material);
+        back = new Node(new Transform().translate(this.lbp.x, this.lbp.y, this.lbp.z).rotateZ(Math.PI).rotateX(-Math.PI/2), geos, this.material);
+        right = new Node(new Transform().translate(this.rup.x, this.rup.y, this.rup.z).rotateZ(-Math.PI/2), geos, this.material);
+        top =  new Node(new Transform().translate(this.rup.x, this.rup.y, this.rup.z), geos, this.material);
+        front = new Node(new Transform().translate(this.rup.x, this.rup.y, this.rup.z).rotateZ(Math.PI).rotateX(Math.PI/2), geos, this.material);
+    }
+    
     @Override
     public Hit hit(Ray ray) {
         final ArrayList<Hit> hits = new ArrayList<>();

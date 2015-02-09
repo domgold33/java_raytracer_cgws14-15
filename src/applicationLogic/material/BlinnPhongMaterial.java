@@ -19,11 +19,11 @@ import matrizen.Vector3;
 public class BlinnPhongMaterial extends Material{
 
     /**
-     * Farbe der diffusen Reflektion
+     * Farbe der diffusen Reflexion
      */
     public final Color diffuse;
     /**
-     * Farbe der spekularen Reflektion
+     * Farbe der spekularen Reflexion
      */
     public final Color specular;
     /**
@@ -33,8 +33,8 @@ public class BlinnPhongMaterial extends Material{
     
     /**
      * Erzeugt ein neues BlinnPhongMaterial.
-     * @param diffuse Farbe der diffusen Reflektion
-     * @param specular Farbe der spekularen Reflektion
+     * @param diffuse Farbe der diffusen Reflexion
+     * @param specular Farbe der spekularen Reflexion
      * @param exponent Bestimmt die Größe des Glanzpunktes.
      */
     public BlinnPhongMaterial(final Color diffuse, final Color specular, final int exponent){
@@ -44,7 +44,7 @@ public class BlinnPhongMaterial extends Material{
     }
     
     @Override
-    public Color colorFor(Hit hit, World world) {
+    public Color colorFor(final Hit hit, final World world, final Tracer tracer) {
         Color colorFor = diffuse.mul(world.ambientLight);
         final Point3 p = hit.ray.at(hit.t);
         for(Light light : world.lightList){

@@ -25,7 +25,7 @@ public class PhongMaterial extends Material{
      */
     public final Color diffuse;
     /**
-     * Farbe der spekularen Reflektion.
+     * Farbe der spekularen Reflexion.
      */
     public final Color specular;
     /**
@@ -36,8 +36,8 @@ public class PhongMaterial extends Material{
     /**
      * Erstellt ein neues Phongmaterial, welches einen diffus und spekular reflektierenden Körper, der 
      * einen Glanzpunkt besitzt, darstellt.
-     * @param diffuse Farbe der diffusen Reflektion.
-     * @param specular Farbe der spekularen Reflektion.
+     * @param diffuse Farbe der diffusen Reflexion.
+     * @param specular Farbe der spekularen Reflexion.
      * @param exponent Beeinflusst die Größe des Glanzpunktes.
      */
     public PhongMaterial(final Color diffuse, final Color specular, final int exponent){
@@ -47,7 +47,7 @@ public class PhongMaterial extends Material{
     }
 
     @Override
-    public Color colorFor(final Hit hit, final World world) {
+    public Color colorFor(final Hit hit, final World world, final Tracer tracer) {
         Color color = diffuse.mul(world.ambientLight);
         final Point3 p = hit.ray.o.add(hit.ray.d.mul(hit.t));
         final Normal3 n = hit.normal;

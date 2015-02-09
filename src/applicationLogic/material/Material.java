@@ -19,8 +19,9 @@ public abstract class Material {
      * Ermittelt die Farbe des Materials an dem übergebenen Schnittpunkt auf einer Geometrie.
      * @param hit Schnittpunkt, für den die Farbe berechnet werden soll.
      * @param world Welt, in der sich die Geometrie, die mit diesem Material versehen ist, befindet.
+     * @param tracer Dient zur Berechnung der Refraktion.
      * @return Farbe an der Position des Schnittpunkts.
      */
-    public abstract Color colorFor(final Hit hit, final World world);
+    public abstract Color colorFor(final Hit hit, final World world, final Tracer tracer);
     
 }

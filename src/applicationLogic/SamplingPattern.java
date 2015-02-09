@@ -15,8 +15,16 @@ import matrizen.Point2;
  */
 public class SamplingPattern {
     
+    /**
+     * Liste aus Punkten mit zufälligen Werten zwischen 0,5 und -0,5
+     */
     public final List<Point2> points;
     
+    /**
+     * Erzeugt ein SamplingPattern. Füllt die points-Liste mit Point2-Objekten mit zufällig generierten Werten
+     * zwischen 0,5 und -0,5.
+     * @param points Anzahl an Punkten in der Liste.
+     */
     public SamplingPattern(final int points){
         this.points = new ArrayList<>();
         for(int i = 0; i < points; i++){
