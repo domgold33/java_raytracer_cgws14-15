@@ -37,7 +37,7 @@ public class CreateImageMain {
         //World mit ambient light
         final World world = new World(new Color(0, 0, 0), new Color(0.25, 0.25, 0.25));
         final Camera camera = new PerspectiveCamera(new Point3(8, 8, 8), new Vector3(-1, -1, -1),
-                              new Vector3(0, 1, 0), new SamplingPattern(1), Math.PI / 4);
+                              new Vector3(0, 1, 0), new SamplingPattern(100), Math.PI / 4);
         //Tiefenschärfe
         final Camera dofCamera = new DOFCamera(new Point3(8, 8, 8), new Vector3(-1, -1, -1),
                                  new Vector3(0, 1, 0), new SamplingPattern(10), Math.PI / 4, 10, 1);
@@ -49,7 +49,7 @@ public class CreateImageMain {
 //        world.geoList.add(new Sphere(new Point3(1, 1, 1), 1.0, new LambertMaterial(new Color(0, 1, 0))));
 //        //PhongMaterial
 //        world.geoList.add(new Plane(new Point3(0, 0, 0), new Normal3(0, 1, 0), new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
-//        geoList.add(new Sphere(new PhongMaterial(new Color(1, 1, 0), new Color(1, 1, 1), 64)));
+//        geoList.add(new AxisAlignedBox(new PhongMaterial(new Color(1, 1, 0), new Color(1, 1, 1), 64)));
 //        final Transform transform = new Transform();
 //        world.geoList.add(new Node(transform.translate(0.5, 0.5, 0.5), geoList, new SingleColorMaterial(new Color(1, 0, 0))));
 //        world.geoList.add(new Plane(new ReflectiveMaterial(new Color(0, 0, 0), new Color(1, 1, 1), 64, new Color(0.5, 0.5, 0.5))));
@@ -79,7 +79,7 @@ public class CreateImageMain {
         frame.setVisible(true);
     }
     
-//    //Beispielszene Refraktion
+    //Beispielszene Refraktion
 //    public static void main(String[] args){
 //        frame.setSize(640, 540);
 //        final World world = new World(new Color(0, 0, 0), new Color(0.1, 0.1, 0.1));
@@ -88,7 +88,7 @@ public class CreateImageMain {
 //        world.lightList.add(new DirectionalLight(new Color(0.3, 0.3, 0.3), new Vector3(1, -1, 0).normalized()));
 //        final Camera camera = new PerspectiveCamera(new Point3(8, 8, 8), new Vector3(-1, -1, -1), new Vector3(0, 1, 0), new SamplingPattern(1), Math.PI/4);
 ////        world.geoList.add(new Plane(new PhongMaterial(new Color(1, 1, 1), new Color(1, 1, 1), 10)));
-//        world.geoList.add(new Plane(new ReflectiveMaterial(new Color(1, 1, 1), new Color(1, 1, 1), 10, new Color(1, 0.5, 0.5))));
+//        world.geoList.add(new Plane(new PhongMaterial(new Color(1, 1, 1), new Color(1, 1, 1), 10)));
 //        //Versuch mit Szenengraph
 ////        final Sphere sphere1 = new Sphere(new ReflectiveMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 10, new Color(1, 0.5, 0.5)));
 ////        final Sphere sphere2 = new Sphere(new ReflectiveMaterial(new Color(0, 1, 0), new Color(1, 1, 1), 10, new Color(1, 0.5, 0.5)));
@@ -141,7 +141,7 @@ public class CreateImageMain {
     
     public static void reflexion(World world){
         world.geoList.add(new Plane(new ReflectiveMaterial(new Color(0.1, 0.1, 0.1), new Color(0, 0, 0), 64, new Color(0.5, 0.5, 0.5))));
-        world.geoList.add(new Sphere(new Point3(-3, 1, 0), 1, new PhongMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64)));
+        world.geoList.add(new Sphere(new Point3(-3, 1, 0), 1, new ReflectiveMaterial(new Color(1, 0, 0), new Color(1, 1, 1), 64, new Color(0.5, 0.5, 0.5))));
         world.geoList.add(new Sphere(new Point3(0, 1, 0), 1, new PhongMaterial(new Color(0, 1, 0), new Color(1, 1, 1), 64)));
         world.geoList.add(new Sphere(new Point3(3, 1, 0), 1, new PhongMaterial(new Color(0, 0, 1), new Color(1, 1, 1), 64)));
         world.lightList.add(new PointLight(new Color(1, 1, 1), new Point3(8, 8, 8)));
